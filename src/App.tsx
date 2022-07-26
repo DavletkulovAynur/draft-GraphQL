@@ -5,7 +5,7 @@ function App() {
   const UnauthorizedApp = lazy(() => import("./UnauthorizedApp"));
   const AuthorizedApp = lazy(() => import("./AuthorizedApp"));
 
-  const isUnauthorized = true;
+  const isUnauthorized = false;
 
   return (
     <div className="App">

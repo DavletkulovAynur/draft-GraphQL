@@ -1,11 +1,12 @@
-import Login from "./view/UI/pages/login";
+import { Dashboard } from "./view/UI/pages/dashboard";
 
-function AuthorizedApp() {
+
+function UnauthorizedApp() {
   return (
-    <div className="App">
-      <Login/>
-    </div>
+    <>
+     <Dashboard/>
+    </>
   );
 }
 
-export default AuthorizedApp;
+export default UnauthorizedApp;
