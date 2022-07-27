@@ -8,3 +8,7 @@ export interface IFormValues {
 export interface IInput {
   register: UseFormRegister<IFormValues>;
 }
+
+export interface IFormButton {
+  loading: boolean
+}

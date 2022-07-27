@@ -1,47 +1,40 @@
-import React, { FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import FormButton from "./components/FormButton";
 import LoginInput from "./components/LoginInput";
 import { IFormValues } from "./types";
 import "./styles.scss";
 import PasswordInput from "./components/PasswordInput";
-import { useMutation, useQuery } from "@apollo/client";
-import { LOGIN } from "../../../viewModels/auth/mutations";
-import { GET_ALL_DASHBOARD_STAT } from "../../../viewModels/dashboard/query";
-
+import { useMutation } from "@apollo/client";
+import { observer } from "mobx-react-lite";
+import { authStore } from "../../../../store";
+import { LOGIN } from "../../../../services/AuthService";
 
 function Login() {
-  const test = useQuery(GET_ALL_DASHBOARD_STAT)
-
-  // console.log('data', test )
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<IFormValues>();
 
-  const [newUser] = useMutation(LOGIN)
+  const [auth, { data, loading, error }] = useMutation(LOGIN);
 
   const onSubmit: SubmitHandler<IFormValues> = async (data: IFormValues) => {
-    // console.log(data);
-    const {login, password} = data
-    newUser({
-      variables: {
-        username: login,
-        password
-      }
-    }).then((data) => {
-      console.log(data.data.login.token)
-      localStorage.setItem('token', data.data.login.token);
-     
-    })
-    // await user.login();
-    // navigate(redirectName, redirectParams);
-  };
+    const { login, password } = data;
 
-  const test2 = () => {
-    console.log('data', test )
-  }
+    try {
+      const response = await auth({
+        variables: {
+          username: login,
+          password,
+        },
+      });
+
+      authStore.setAuth(true);
+      localStorage.setItem("token", response.data.login.token);
+    } catch (e) {
+      console.log("ERROR", error);
+    }
+  };
 
   return (
     <div className="Login">
@@ -49,7 +42,6 @@ function Login() {
       <h4 className="Login__description">
         Уникальная технология доступная для вашего бизнеса уже сейчас!
       </h4>
-      <button onClick={test2}>PRESS</button>
       <form
         className="Login__form"
         autoComplete="on"
@@ -63,11 +55,11 @@ function Login() {
         </div>
 
         <div>
-          <FormButton />
+          <FormButton loading={loading} />
         </div>
       </form>
     </div>
   );
 }
 
-export default Login;
+export default observer(Login);
