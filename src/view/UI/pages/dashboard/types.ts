@@ -1,4 +1,5 @@
 export interface IPieItem {
+  id: string,
   title: string,
   name: string,
   value: number,
@@ -6,6 +7,7 @@ export interface IPieItem {
 }
 
 export interface IDataStatItem {
+  id: string,
  total: number,
  name: string,
  data: IPieItem[]
