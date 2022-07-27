@@ -1,0 +1,15 @@
+.Charts {
+  &__root {
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    &__root {
+      flex-direction: column;
+    }
+  }
+}
