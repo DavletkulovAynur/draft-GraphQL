@@ -1,4 +1,4 @@
-import { IChart, IDataStat } from "../types";
+import { IChart } from "../types";
 import { DashboardStatItem } from "./DashboardStatItem";
 import "./styles/Charts.scss";
 

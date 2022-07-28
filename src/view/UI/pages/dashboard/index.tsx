@@ -7,20 +7,20 @@ import { useEffect, useState } from "react";
 import { dashboardAdapter } from "../../../../utils/dashboardAdapter";
 
 export function Dashboard() {
-  const { loading, error, data } = useQuery(GET_ALL_DASHBOARD_STAT);
-  const [charts, setCharts] = useState(null)
-  
-  useEffect(() => {
-    if(data) {
-      setCharts(dashboardAdapter(data))
-    }
-  }, [data])
+  const { data } = useQuery(GET_ALL_DASHBOARD_STAT);
+  const [charts, setCharts] = useState(null);
 
+  useEffect(() => {
+    if (data) {
+      setCharts(dashboardAdapter(data));
+    }
+  }, [data]);
+
+  //FIXME: добавть loader
   return (
     <Box sx={{ display: "flex" }}>
       <Sidebar />
-
-      <Body charts={charts}/>
+      <Body charts={charts} />
     </Box>
   );
 }

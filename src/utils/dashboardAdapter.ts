@@ -1,7 +1,10 @@
+
+//FIXME: написать и указать types
 export function dashboardAdapter(data: any) {
   const { dialogs, lists, scenarios } = data.dashboard;
   const newObject: any = {};
 
+  //FIXME: создать конструктор
   function adapter(statItem: any, name: string, keyStat: string) {
     const { active, inactive, completed } = statItem;
     newObject[keyStat] = {}

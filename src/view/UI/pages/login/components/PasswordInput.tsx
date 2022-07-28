@@ -1,4 +1,4 @@
-import React, { VFC, useState } from "react";
+import React, { useState } from "react";
 import { InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { IInput } from "../types";
@@ -27,13 +27,10 @@ const PasswordInput = ({ register }: IInput) => {
       autoComplete="on"
       fullWidth
       type={showPassword ? "text" : "password"}
-     
-     
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
             <IconButton
-            
               aria-label="toggle password visibility"
               onClick={handleClickShowPassword}
               onMouseDown={handleMouseDownPassword}

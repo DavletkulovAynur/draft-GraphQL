@@ -10,14 +10,11 @@ import { authStore } from "../../../../store";
 import { LOGIN } from "../../../../services/AuthService";
 
 function Login() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<IFormValues>();
+  const { register, handleSubmit } = useForm<IFormValues>();
 
-  const [auth, { data, loading, error }] = useMutation(LOGIN);
+  const [auth, { loading, error }] = useMutation(LOGIN);
 
+  //FIXME: запросы вынести в отдельный компонент authModel
   const onSubmit: SubmitHandler<IFormValues> = async (data: IFormValues) => {
     const { login, password } = data;
 
