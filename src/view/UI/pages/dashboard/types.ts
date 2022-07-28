@@ -7,7 +7,6 @@ export interface IPieItem {
 }
 
 export interface IDataStatItem {
-  id: string,
  total: number,
  name: string,
  data: IPieItem[]
@@ -22,3 +21,11 @@ export interface IDataStat {
 export interface IDashboardStatItem {
   pieItem: IDataStatItem
 } 
+
+export interface IBody {
+  charts: IDataStat | null
+}
+
+export interface IChart {
+  charts: IDataStat | null
+}
