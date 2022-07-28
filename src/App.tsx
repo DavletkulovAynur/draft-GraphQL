@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { authStore } from "./store";
 import "./styles.scss"
+import { Loader } from "./view/UI/common/Loader";
 
 function App() {
   const UnauthorizedApp = lazy(() => import("./UnauthorizedApp"));
@@ -17,7 +18,7 @@ function App() {
   checkAuthUser()
   return (
     <div className="App">
-      <Suspense fallback="Loading">
+      <Suspense fallback={ <Loader/>}>
         {authStore.isAuth ? <AuthorizedApp />  : <UnauthorizedApp />}
       </Suspense>
     </div>

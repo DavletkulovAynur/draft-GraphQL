@@ -1,20 +1,24 @@
-
-import { makeAutoObservable, runInAction } from "mobx"
-
+import { makeAutoObservable, runInAction } from "mobx";
 
 class Store {
-  isAuth = false
+  isAuth = false;
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this);
   }
 
   setAuth(bool: boolean) {
     runInAction(() => {
-      this.isAuth = bool
-    })
-   
+      this.isAuth = bool;
+    });
+  }
+
+  logout() {
+    runInAction(() => {
+      this.isAuth = false;
+      localStorage.removeItem("token");
+    });
   }
 }
 
-export const authStore = new Store()
+export const authStore = new Store();
