@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import { Body } from "./components/Body";
-import { Sidebar } from "./components/SideBar";
+import Sidebar from "./components/SideBar";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_DASHBOARD_STAT } from "../../../../services/DashboardService";
 import { useEffect, useState } from "react";
