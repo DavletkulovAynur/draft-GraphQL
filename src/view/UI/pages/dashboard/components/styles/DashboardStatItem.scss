@@ -1,6 +1,13 @@
 .Dashdord-stat-item {
-  // display: flex;
-  // flex-direction: column;
+  tspan {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  tspan:last-child {
+    font-size: 32px;
+    fill: #ef6b4b;
+  }
 
   &__description {
     padding: 0;
@@ -19,7 +26,9 @@
     margin-bottom: 0;
   }
 
-  .test {
+  .active-text {
     color: #9246b3;
+    text-decoration: underline;
+    cursor: default;
   }
 }

@@ -18,7 +18,7 @@ export function dashboardAdapter(data: any) {
       {
         id: "2",
         title: "Неактивных",
-        name: "active",
+        name: "inactive",
         value: inactive,
         color: "#d0cbd6",
       },
@@ -34,6 +34,6 @@ export function dashboardAdapter(data: any) {
 
   adapter(dialogs, "Диалоги", 'dialogs');
   adapter(scenarios, "Сценарии", 'scenarios');
-  adapter(lists, "Диалоги", 'lists');
+  adapter(lists, "Списки", 'lists');
   return newObject
 }
